@@ -1,21 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+} from 'react-native';
 
-export default function App() {
+import Login from './component/src/Login';
+import Home from './component/src/Home';
+import Menu from './component/src/Menu';
+import Profile from './component/src/Profile';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
+// console.disableYellowBox = true;
+
+const App: () => React$Node = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="login">
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="menu"
+          component={Menu}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="profile"
+          component={Profile}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

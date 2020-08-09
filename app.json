@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Food_DiliveryAgent",
+    "name": "Food Dilivery",
     "slug": "Food_DiliveryAgent",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,6 +18,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
