@@ -29,12 +29,14 @@ const line = (
     style={{ width: width - 60, height: 1, backgroundColor: "gray" }}
   ></View>
 );
+
+export const ketnoi = io(addressSocket, {jsonp: false});
 var socketcConn;
 export default class Login extends Component {
   constructor(props) {
     super(props);
     socketcConn = this;
-    this.socket = io(addressSocket, { jsonp: false });
+    this.socket = ketnoi;
     this.state = {
       username: "",
       password: "",
@@ -45,28 +47,28 @@ export default class Login extends Component {
       nameIcon: "eye-slash",
     };
 
-    this.socket.on("order-agent", function (data) {
-      console.log("order:");
-      console.log(data);
-      Alert.alert(
-        "Công việc mới: ",
-        "Bạn có muốn nhận đơn ở: " + data.address,
-        [
-          {
-            text: "Cancel",
-            onPress: () => socketcConn.socket.emit("agent-un-receive"),
-            style: "cancel",
-          },
-          {
-            text: "Xác nhận",
-            onPress: () => {
-              socketcConn.socket.emit("agent-receive");
-            },
-          },
-        ],
-        { cancelable: false }
-      );
-    });
+    // this.socket.on("order-agent", function (data) {
+    //   console.log("order:");
+    //   console.log(data);
+    //   Alert.alert(
+    //     "Công việc mới: ",
+    //     "Bạn có muốn nhận đơn ở: " + data.address,
+    //     [
+    //       {
+    //         text: "Cancel",
+    //         onPress: () => socketcConn.socket.emit("agent-un-receive"),
+    //         style: "cancel",
+    //       },
+    //       {
+    //         text: "Xác nhận",
+    //         onPress: () => {
+    //           socketcConn.socket.emit("agent-receive");
+    //         },
+    //       },
+    //     ],
+    //     { cancelable: false }
+    //   );
+    // });
   }
 
   _login() {
@@ -77,10 +79,10 @@ export default class Login extends Component {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        // username: this.state.username,
-        // password: this.state.password,
-        username: "tranphu",
-        password: "147147",
+        username: this.state.username,
+        password: this.state.password,
+        // username: "voduykhanh",
+        // password: "444777",
       }),
     })
       .then((response) => response.json())
@@ -117,7 +119,7 @@ export default class Login extends Component {
           this.socket.on("ok", function (data) {
             console.log("data");
           });
-          // this.props.navigation.navigate("home");
+          this.props.navigation.navigate("home");
         }
         // console.log(data.data.result);
         // if (data.result == 1) {
@@ -179,7 +181,7 @@ export default class Login extends Component {
               </Text>
               <Text style={{ fontSize: 40, color: "gray" }}>Sign in</Text>
             </View>
-            <View style={{ flex: 11 }}>
+            <View style={{ flex: 11 ,marginTop:70}}>
               <View>
                 <TextInput
                   style={{ fontSize: 18 }}
@@ -206,7 +208,7 @@ export default class Login extends Component {
                   ></TextInput>
                   <TouchableOpacity
                     onPress={() => this._hidePass()}
-                    style={{ flex: 1, top: 10 }}
+                    style={{ flex: 1 }}
                   >
                     <Icon
                       name={this.state.nameIcon}
@@ -222,7 +224,7 @@ export default class Login extends Component {
                     backgroundColor: "gray",
                   }}
                 ></View>
-                <View
+                {/* <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "flex-end",
@@ -237,7 +239,7 @@ export default class Login extends Component {
                   >
                     Forgot Password
                   </Text>
-                </View>
+                </View> */}
                 <TouchableOpacity onPress={() => this._login()}>
                   <View
                     style={{

@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   image: {
     width: width,
     height: width / 2,
-    // backgroundColor: "#fff",
+    backgroundColor: "#fff",
   },
   infor: {
     // flex: 1,
@@ -148,6 +148,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // justifyContent: 'flex-start',
     // backgroundColor: 'blue',
+  },
+  divFood : {
+    justifyContent: "flex-start",
+    width: width - 20,
+    padding: 5,
+    borderRadius: 20,
+    marginTop: 5,
+    marginBottom: 0,
+    alignItems: "center",
+    elevation: 8,
+    shadowOpacity: 0.3,
+    shadowRadius: 100,
+    backgroundColor: "#e3faeb",
+  },
+  imageFood: {
+    width: width / 2 - 20 - 10,
+    height: 100,
+    backgroundColor: "transparent",
   },
 });
 

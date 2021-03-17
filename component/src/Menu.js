@@ -104,7 +104,7 @@ export default class Menu extends Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             {iconTimes}
           </TouchableOpacity>
-          <Text style={{ color: "red" }}>Logo here</Text>
+          <Text style={{ color: "red" }}></Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("profile")}
           >
