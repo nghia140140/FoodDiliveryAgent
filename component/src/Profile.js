@@ -20,7 +20,7 @@ import { styles } from "../styles/StyleProfile";
 import Icon from "react-native-vector-icons/FontAwesome5";
 // import DropdownAlert from 'react-native-dropdownalert';
 import { API } from "../connection/index";
-
+//
 var { height, width } = Dimensions.get("window");
 
 // const iconSearch = <Icon name="times" size={20} color={'#fff'} />;
